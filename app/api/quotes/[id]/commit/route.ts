@@ -3,11 +3,10 @@ import { NextResponse } from "next/server";
 
 export async function POST(
   req: Request,
-  { params }: { params: { id: string } }
+  context: { params: { [key: string]: string } } // <-- use string index signature
 ) {
-  const quoteId = params.id;
+  const quoteId = context.params.id;
 
-  // Mock payment session
   const paymentSession = {
     id: "mock-session-" + quoteId,
     quoteId,
