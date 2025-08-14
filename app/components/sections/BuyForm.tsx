@@ -78,9 +78,9 @@ export default function BuyForm() {
   return (
     <div className="w-full max-w-md mx-auto p-4 sm:p-6">
   <Card className="relative bg-gradient-to-br from-gray-800/70 to-gray-900/80 backdrop-blur-xl border border-gray-700/30 rounded-3xl shadow-2xl p-4 sm:p-6 space-y-6 overflow-hidden">
-    {/* Neon Accent Lines */}
+    {/* Neon Accent Lines <div className="absolute bottom-1 left-0 w-full h-1 bg-gradient-to-r from-green-400 via-teal-400 to-cyan-400 animate-pulse" /> */}
     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 animate-pulse" />
-    <div className="absolute bottom-1 left-0 w-full h-1 bg-gradient-to-r from-green-400 via-teal-400 to-cyan-400 animate-pulse" />
+    
 
     {/* Form Section */}
     <div className="space-y-5">
