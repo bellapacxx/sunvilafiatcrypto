@@ -5,7 +5,7 @@ import BuyForm from "./components/sections/BuyForm";
 
 export default function HomePage() {
   return (
-    <section className="max-w-5xl mx-auto px-4 py-8 sm:py-28 md:py-32 text-center">
+    <section className="max-w-5xl mx-auto px-4 py-8 sm:py-20 md:py-32 text-center">
       {/* Hero Title */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
