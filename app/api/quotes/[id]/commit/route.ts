@@ -1,9 +1,11 @@
 // app/api/quotes/[id]/commit/route.ts
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, context: { params: { id: string } }) {
-  // Access params safely inside the function
-  const quoteId = context.params.id;
+export async function POST(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const quoteId = params.id;
 
   // Mock payment session
   const paymentSession = {
