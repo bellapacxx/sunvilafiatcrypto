@@ -4,7 +4,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Custodial Fiat → Crypto Platform",
+  title: "Fiat → Crypto Platform",
   description: "Buy crypto instantly with fiat – fast, secure, and easy.",
 };
 
