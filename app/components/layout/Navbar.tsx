@@ -10,7 +10,7 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="bg-white border-b border-gray-200 fixed w-full z-50">
+    <header className="bg-white border-b border-gray-200 fixed w-full z-50 mb-10">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold text-primary">
