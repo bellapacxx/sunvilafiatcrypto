@@ -1,18 +1,18 @@
 // app/api/quotes/[id]/commit/route.ts
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(
-  req: Request,
-  context: { params: { [key: string]: string } } // <-- use string index signature
-) {
-  const quoteId = context.params.id;
+type Params = Promise<{ id: string }>;
 
+export async function POST(req: NextRequest, { params }: { params: Params }) {
+  const { id: quoteId } = await params;
+
+  // Mock payment session
   const paymentSession = {
-    id: "mock-session-" + quoteId,
+    id: `mock-session-${quoteId}`,
     quoteId,
-    psp: "mock-psp",
-    clientSecret: "mock-client-secret",
-    redirectUrl: "https://mock-psp.com/pay",
+    psp: 'mock-psp',
+    clientSecret: 'mock-client-secret',
+    redirectUrl: 'https://mock-psp.com/pay',
   };
 
   return NextResponse.json({ paymentSession });
