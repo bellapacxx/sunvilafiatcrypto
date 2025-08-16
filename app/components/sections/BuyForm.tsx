@@ -252,7 +252,7 @@ export default function BuyForm() {
         <button
           onClick={() => form.assetId && setStep(1)}
           disabled={!form.assetId}
-          className={`h-12 w-full rounded-2xl text-white font-semibold text-sm transition-all duration-300 ${
+          className={`h-12 w-full rounded-3xl text-white font-semibold text-sm transition-all duration-300 ${
             form.assetId
               ? "bg-cyan-600 hover:scale-105 hover:brightness-110 shadow-lg"
               : "bg-slate-800 cursor-not-allowed"
@@ -287,7 +287,7 @@ export default function BuyForm() {
         <button
           onClick={() => setStep(2)}
           disabled={!form.amount || Number(form.amount) <= 0}
-          className="w-full py-3 text-sm font-bold text-white bg-cyan-600 hover:from-cyan-500 hover:via-slate-500 hover:to-indigo-600 shadow-lg rounded-2xl transition-all duration-300"
+          className="w-full py-3 text-sm font-bold text-white bg-cyan-600 hover:from-cyan-500 hover:via-slate-500 hover:to-indigo-600 shadow-lg rounded-3xl transition-all duration-300"
         >
           Continue
         </button>
@@ -309,7 +309,7 @@ export default function BuyForm() {
         <button
           onClick={getQuote}
           disabled={loading || !form.assetId || !form.amount || !form.country || !form.paymentMethod}
-          className="w-full py-3 text-sm font-bold text-white bg-cyan-600 hover:from-cyan-500 hover:via-slate-500 hover:to-indigo-600 shadow-lg rounded-2xl transition-all duration-300"
+          className="w-full py-3 text-sm font-bold text-white bg-cyan-600 hover:from-cyan-500 hover:via-slate-500 hover:to-indigo-600 shadow-lg rounded-3xl transition-all duration-300"
         >
           {loading ? "Processing..." : "Continue to Payment"}
         </button>
@@ -357,7 +357,7 @@ export default function BuyForm() {
     <button
       onClick={commitQuote}
       disabled={loading || timeLeft <= 0}
-      className="w-full py-3 text-sm font-bold text-white bg-cyan-600 hover:from-cyan-500 hover:to-indigo-500 shadow-lg rounded-2xl transition-all duration-300 hover:scale-105"
+      className="w-full py-3 text-sm font-bold text-white bg-cyan-600 hover:from-cyan-500 hover:to-indigo-500 shadow-lg rounded-3xl transition-all duration-300 hover:scale-105"
     >
       {loading ? "Processing..." : "Confirm & Pay"}
     </button>
