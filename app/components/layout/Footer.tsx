@@ -16,7 +16,7 @@ export default function Footer() {
       </div>
 
       {/* Optional neon accent line */}
-      <div className="w-full h-1 bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 animate-pulse mt-2" />
+      <div className="w-full h-1 bg-cyan-400 animate-pulse mt-2" />
     </footer>
   );
 }

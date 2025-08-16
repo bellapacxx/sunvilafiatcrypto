@@ -44,29 +44,31 @@ interface Quote {
   };
 }
 
+// QuoteInfoCard - slate theme compatible
 const QuoteInfoCard: React.FC<QuoteInfoCardProps> = ({ label, value, color }) => (
-  <div className="relative p-4 sm:p-5 bg-gray-800/40 backdrop-blur-sm rounded-2xl shadow-lg flex flex-col items-center justify-center transform transition-transform hover:-translate-y-1 hover:scale-[1.03] hover:shadow-2xl">
-    <span className="text-sm sm:text-base text-gray-300 mb-1">{label}</span>
+  <div className="relative p-4 sm:p-5 bg-slate-800/40 backdrop-blur-sm rounded-2xl shadow-lg flex flex-col items-center justify-center transform transition-transform hover:-translate-y-1 hover:scale-[1.03] hover:shadow-2xl">
+    <span className="text-sm sm:text-base text-slate-300 mb-1">{label}</span>
     <span className={`text-lg sm:text-xl font-bold ${color}`}>{value}</span>
-    <div className="absolute -top-4 -right-4 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full opacity-20 blur-3xl pointer-events-none" />
+    <div className="absolute -top-4 -right-4 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-cyan-400 via-slate-400 to-indigo-500 rounded-full opacity-20 blur-3xl pointer-events-none" />
   </div>
 );
 
+// TimerBar - slate theme compatible
 const TimerBar: React.FC<TimerBarProps> = ({ timeLeft, totalTime = 30 }) => {
   const timeLeftPercentage = (timeLeft / totalTime) * 100;
-  let barColor = "bg-green-500";
+  let barColor = "bg-cyan-500";
   if (timeLeft < 10) {
     barColor = "bg-red-500";
   } else if (timeLeft < 20) {
-    barColor = "bg-yellow-500";
+    barColor = "bg-yellow-400";
   }
 
   return (
     <div className="space-y-2">
-      <div className="text-center text-yellow-400 font-mono font-bold text-base sm:text-lg tracking-wide">
+      <div className="text-center text-slate-300 font-mono font-bold text-base sm:text-lg tracking-wide">
         Quote expires in: {timeLeft}s
       </div>
-      <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+      <div className="h-2 bg-slate-700 rounded-full overflow-hidden shadow-inner">
         <div
           className={`h-full transition-all duration-1000 ${barColor}`}
           style={{ width: `${timeLeftPercentage}%` }}
@@ -75,6 +77,7 @@ const TimerBar: React.FC<TimerBarProps> = ({ timeLeft, totalTime = 30 }) => {
     </div>
   );
 };
+
 
 const ASSETS = [
   { id: "svc", label: "SunvilaCoin", symbol: "SVC" },
@@ -180,54 +183,55 @@ export default function BuyForm() {
   const selectedAsset = ASSETS.find((a) => a.id === form.assetId);
 
   return (
-    <div className="w-full max-w-sm mx-auto p-4 bg-gray-900/80 backdrop-blur-md border border-gray-700/30 rounded-2xl shadow-lg relative flex flex-col space-y-4">
+<div className="w-full max-w-sm mx-auto p-4 bg-slate-900/80 backdrop-blur-xl border border-slate-700/20 rounded-3xl shadow-2xl relative flex flex-col space-y-5 overflow-visible">
   {/* Neon Top Line */}
-  <div className="absolute top-0 left-0 w-full h-1 rounded-tl-2xl rounded-tr-2xl bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 animate-pulse" />
+  <div className="absolute top-2 left-0 w-full h-1.5 rounded-t-2xl bg-cyan-600 animate-gradient-x shadow-md" />
 
   {/* Header */}
-  <div className="flex items-center space-x-2 z-10">
+  <div className="flex items-center space-x-2 z-10 mb-2">
     {step > 0 && (
       <button
         onClick={() => setStep(step - 1)}
-        className="p-2 rounded-full text-gray-400 hover:text-white hover:bg-gray-700/50 transition-colors"
+        className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800/50 backdrop-blur-sm transition-all duration-300 shadow hover:shadow-cyan-400/50"
       >
         <ArrowLeft className="h-5 w-5" />
       </button>
     )}
-    
   </div>
 
   {/* Steps */}
-  <div className="flex-1 flex flex-col justify-between w-full overflow-visible">
+  <div className="flex-1 flex flex-col justify-between w-full overflow-visible space-y-5">
+
     {/* Step 0: Select Token */}
     {step === 0 && (
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col items-center space-y-3">
-          <span className="text-lg font-bold text-gray-300">Buy</span>
+          <span className="text-lg font-bold text-cyan-400">Buy</span>
+
           <div className="flex items-center space-x-3 relative">
             {ASSETS.slice(0, 3).map((asset) => (
               <div
                 key={asset.id}
                 onClick={() => handleFormChange("assetId", asset.id)}
-                className={`flex-shrink-0 h-10 w-10 rounded-full flex items-center justify-center cursor-pointer border-2 transition-all ${
+                className={`flex-shrink-0 h-12 w-12 rounded-full flex items-center justify-center cursor-pointer border-2 transition-all duration-300 ${
                   form.assetId === asset.id
-                    ? "border-pink-500 scale-105"
-                    : "border-transparent hover:border-gray-500 hover:scale-105"
+                    ? "border-cyan-400 scale-110 shadow-lg shadow-cyan-400/50"
+                    : "border-slate-600 hover:border-slate-400 hover:scale-105 hover:shadow-md"
                 }`}
               >
-                <span className="text-xs text-white font-semibold">{asset.symbol}</span>
+                <span className="text-sm text-white font-semibold">{asset.symbol}</span>
               </div>
             ))}
 
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="h-8 px-3 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-white font-medium text-sm flex-shrink-0"
+              className="h-9 px-4 rounded-2xl bg-cyan-600 text-white font-medium text-sm flex-shrink-0 transition-all duration-300 hover:scale-105 hover:brightness-110 shadow-md"
             >
               Select Token
             </button>
 
             {dropdownOpen && (
-              <div className="absolute top-full mt-1 right-0 w-40 bg-gray-800 rounded-lg shadow-lg z-50 flex flex-col max-h-48 overflow-y-auto">
+              <div className="absolute top-full mt-1 right-0 w-44 bg-slate-800/90 backdrop-blur-sm rounded-xl shadow-xl z-50 flex flex-col max-h-52 overflow-y-auto border border-slate-700">
                 {ASSETS.map((asset) => (
                   <button
                     key={asset.id}
@@ -235,7 +239,7 @@ export default function BuyForm() {
                       handleFormChange("assetId", asset.id);
                       setDropdownOpen(false);
                     }}
-                    className="px-3 py-2 text-white text-sm hover:bg-gray-700 text-left rounded-t-lg last:rounded-b-lg"
+                    className="px-3 py-2 text-white text-sm hover:bg-slate-700 text-left rounded-t-lg last:rounded-b-lg transition-colors"
                   >
                     {asset.label} ({asset.symbol})
                   </button>
@@ -243,15 +247,15 @@ export default function BuyForm() {
               </div>
             )}
           </div>
-
-          
         </div>
 
         <button
           onClick={() => form.assetId && setStep(1)}
           disabled={!form.assetId}
-          className={`h-10 w-full rounded-full text-white font-medium text-sm transition-colors ${
-            form.assetId ? "bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 hover:bg-pink-600" : "bg-gray-600 cursor-not-allowed"
+          className={`h-12 w-full rounded-2xl text-white font-semibold text-sm transition-all duration-300 ${
+            form.assetId
+              ? "bg-cyan-600 hover:scale-105 hover:brightness-110 shadow-lg"
+              : "bg-slate-800 cursor-not-allowed"
           }`}
         >
           Get Started
@@ -263,7 +267,7 @@ export default function BuyForm() {
     {step === 1 && (
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col space-y-2">
-          <label className="text-xs text-gray-400 font-medium">Amount</label>
+          <label className="text-xs text-slate-400 font-medium">Amount</label>
           <AmountInput
             value={form.amount}
             onChange={(v: string) => handleFormChange("amount", v)}
@@ -272,7 +276,7 @@ export default function BuyForm() {
         </div>
 
         <div className="flex flex-col space-y-2">
-          <label className="text-xs text-gray-400 font-medium">Country</label>
+          <label className="text-xs text-slate-400 font-medium">Country</label>
           <Select
             options={COUNTRIES.map((c) => ({ id: c.id, label: c.label }))}
             value={form.country}
@@ -280,13 +284,13 @@ export default function BuyForm() {
           />
         </div>
 
-        <Button
+        <button
           onClick={() => setStep(2)}
           disabled={!form.amount || Number(form.amount) <= 0}
-          className="w-full py-2 text-sm font-bold text-white bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 hover:from-indigo-600 hover:to-purple-600 shadow-md rounded-xl"
+          className="w-full py-3 text-sm font-bold text-white bg-cyan-600 hover:from-cyan-500 hover:via-slate-500 hover:to-indigo-600 shadow-lg rounded-2xl transition-all duration-300"
         >
           Continue
-        </Button>
+        </button>
       </div>
     )}
 
@@ -294,7 +298,7 @@ export default function BuyForm() {
     {step === 2 && (
       <div className="flex flex-col space-y-4">
         <div className="flex flex-col space-y-2">
-          <label className="text-xs text-gray-400 font-medium">Payment Method</label>
+          <label className="text-xs text-slate-400 font-medium">Payment Method</label>
           <Select
             options={PAYMENT_METHODS.map((p) => ({ id: p.id, label: p.label }))}
             value={form.paymentMethod}
@@ -302,57 +306,67 @@ export default function BuyForm() {
           />
         </div>
 
-        <Button
+        <button
           onClick={getQuote}
           disabled={loading || !form.assetId || !form.amount || !form.country || !form.paymentMethod}
-          className="w-full py-2 text-sm font-bold text-white bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 hover:from-indigo-600 hover:to-purple-600 shadow-md rounded-xl"
+          className="w-full py-3 text-sm font-bold text-white bg-cyan-600 hover:from-cyan-500 hover:via-slate-500 hover:to-indigo-600 shadow-lg rounded-2xl transition-all duration-300"
         >
           {loading ? "Processing..." : "Continue to Payment"}
-        </Button>
+        </button>
       </div>
     )}
 
     {/* Step 3: Confirm & Pay */}
-    {step === 3 && quote && (
-      <div className="flex flex-col space-y-4">
-        <div className="grid grid-cols-1 gap-3">
-          <QuoteInfoCard
-            label="You Pay"
-            value={`${quote.fiat} ${quote.amtFiat.toFixed(2)}`}
-            color="text-green-400"
-          />
-          <QuoteInfoCard
-            label="You Receive"
-            value={`${quote.amtCrypto.toFixed(6)} ${selectedAsset?.symbol}`}
-            color="text-purple-400"
-          />
-          <QuoteInfoCard
-            label="Rate"
-            value={`1 ${selectedAsset?.symbol} = ${quote.fiat} ${quote.rate.toLocaleString()}`}
-            color="text-indigo-400"
-          />
-          <QuoteInfoCard
-            label="Fees"
-            value={`${(quote.fees.platform + quote.fees.network).toFixed(2)} ${quote.fiat}`}
-            color="text-red-400"
-          />
-        </div>
+{step === 3 && quote && (
+  <div className="flex flex-col space-y-4">
+    <div className="grid grid-cols-1 gap-3">
+      <QuoteInfoCard
+        label="You Pay"
+        value={`${quote.fiat} ${quote.amtFiat.toFixed(2)}`}
+        color="text-cyan-400"
+      />
+      <QuoteInfoCard
+        label="You Receive"
+        value={`${quote.amtCrypto.toFixed(6)} ${selectedAsset?.symbol}`}
+        color="text-cyan-400"
+      />
+      <QuoteInfoCard
+        label="Rate"
+        value={`1 ${selectedAsset?.symbol} = ${quote.fiat} ${quote.rate.toLocaleString()}`}
+        color="text-cyan-400"
+      />
+      <QuoteInfoCard
+        label="Fees"
+        value={`${(quote.fees.platform + quote.fees.network).toFixed(2)} ${quote.fiat}`}
+        color="text-cyan-400"
+      />
+    </div>
 
-        <TimerBar timeLeft={timeLeft} />
+    <TimerBar
+      timeLeft={timeLeft}
+      totalTime={30}
+      // Optional: add internal gradient for slate theme
+    />
 
-        {error && <p className="text-xs text-red-400 text-center">{error}</p>}
-
-        <Button
-          onClick={commitQuote}
-          disabled={loading || timeLeft <= 0}
-          className="w-full py-2 text-sm font-bold text-white bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 hover:from-green-600 hover:to-emerald-500 shadow-md rounded-xl"
-        >
-          {loading ? "Processing..." : "Confirm & Pay"}
-        </Button>
-      </div>
+    {error && (
+      <p className="text-xs text-red-400 text-center font-semibold drop-shadow-md">
+        {error}
+      </p>
     )}
+
+    <button
+      onClick={commitQuote}
+      disabled={loading || timeLeft <= 0}
+      className="w-full py-3 text-sm font-bold text-white bg-cyan-600 hover:from-cyan-500 hover:to-indigo-500 shadow-lg rounded-2xl transition-all duration-300 hover:scale-105"
+    >
+      {loading ? "Processing..." : "Confirm & Pay"}
+    </button>
+  </div>
+)}
+
   </div>
 </div>
+
 
 
   );

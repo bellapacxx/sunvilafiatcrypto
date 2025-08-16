@@ -13,7 +13,7 @@ export default function Navbar() {
     <header className="bg-white border-b border-gray-200 fixed w-full z-50 mb-10">
       <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold text-primary">
+        <Link href="/" className="text-xl font-bold text-cyan-600">
           SunvilaCoin
         </Link>
 
@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {/* Desktop Menu */}
           {/* Connect Wallet Button */}
-          <button className="px-5 py-2 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 text-white font-semibold shadow-lg hover:from-yellow-500 hover:to-orange-700 transition-all duration-300 hover:scale-105">
+          <button className="px-5 py-2 rounded-full bg-cyan-600 text-white font-semibold shadow-lg hover:from-yellow-500 hover:to-orange-700 transition-all duration-300 hover:scale-105">
             Connect Wallet
           </button>
           <ul className="hidden md:flex gap-6 text-lg font-medium text-gray-700">

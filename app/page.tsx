@@ -11,7 +11,7 @@ export default function HomePage() {
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6 }}
-    className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 leading-tight"
+    className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-transparent bg-clip-text bg-cyan-600 leading-tight"
   >
     Buy Crypto with Fiat – Fast & Secure
   </motion.h1>
