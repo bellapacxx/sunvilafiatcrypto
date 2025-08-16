@@ -275,15 +275,6 @@ export default function BuyForm() {
           />
         </div>
 
-        <div className="flex flex-col space-y-2">
-          <label className="text-xs text-slate-400 font-medium">Country</label>
-          <Select
-            options={COUNTRIES.map((c) => ({ id: c.id, label: c.label }))}
-            value={form.country}
-            onChange={(v: string) => handleFormChange("country", v)}
-          />
-        </div>
-
         <button
           onClick={() => setStep(2)}
           disabled={!form.amount || Number(form.amount) <= 0}

@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     rate,
     amtFiat,
     amtCrypto,
-    fees: { platform: 10, network: 5 },
+    fees: { platform: 0.1, network: 0.02 },
     expiresAt: new Date(Date.now() + 30000).toISOString(), // 30s expiry
   };
 
